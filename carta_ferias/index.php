@@ -7,7 +7,7 @@
     <title>Document</title>
 
     <style>
-        .container{
+        .container {
             margin: 0 auto;
             width: 40%;
             border: 1px solid #000;
@@ -22,9 +22,9 @@
 </head>
 
 <body>
-   
 
-    <form class="container" method="get" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+
+    <form class="container" method="post" action=" <?php echo $_SERVER['PHP_SELF'] ?>">
         <label>Nome do funcionário:</label>
         <input type="text" placeholder="Digite o nome do funcionário" name="name">
         <br>
@@ -37,6 +37,25 @@
 
         <button type="submit">Gerar</button>
     </form>
+
+    <?php
+    if (isset($_POST['name']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
+        $nome = $_POST['name'];
+        $inicio_ferias = $_POST['start_date'];
+        $fim_ferias = $_POST['end_date'];
+
+    ?>
+
+        <div class="container">
+            <p>Nome do funcionário: <?php echo $nome ?></p>
+            <p>Data de início: <?php echo $inicio_ferias ?></p>
+            <p>Data final: <?php echo $fim_ferias ?></p>
+        </div>
+    <?php
+    } else {
+        echo "Aguardando o preenchimento das informações";
+    }
+    ?>
 </body>
 
 </html>
