@@ -7,7 +7,7 @@ $open_to_negotiation = true;
 
 $skills = ["html", "css", "javascript", "vue.js", "php"];
 
-$adress = [
+$address = [
     'cep' => '69088591',
     'city' => 'Manaus',
     'state' => 'Amazonas',
@@ -17,7 +17,7 @@ $adress = [
     'complement' => 'campo de futebol'
 ];
 
-$contacts = [
+$contacts = (object) [
     'github' => 'https://github.com/fnascimentosilva',
     'phone' => '+351 966260698',
     'linkedin' => 'https://www.linkedin.com/in/fabr%C3%ADcio-nascimento-7b6a41143/'
@@ -25,18 +25,18 @@ $contacts = [
 
 $experiences = [
     [
-        'company_name' => 'Doug Tech',
+        'company_name' => 'Continental Advanced Antenas',
         'cargo' => 'Programador',
         'period' => '12/02/2020 até 12/10/2023',
         'description' => '...................'
     ],
     [
-        'company_name' => 'Doug Tech',
+        'company_name' => 'Continental Advanced Antenas',
         'cargo' => 'Programador',
         'period' => '12/02/2020 até 12/10/2023',
         'description' => '...................'
     ]
-]
+    ];
 
 ?>
 
@@ -98,14 +98,15 @@ $experiences = [
         <p><?php echo "$address[street] - $address[number] - $address[neighborhood]"; ?>
     </p>
         <p><?php echo "$address[cep] - $address[city] - $address[state]"; ?></p>
-        <p>Github: <?php echo $contacts->github ?></p>
-        <p>Telefone: <?php echo $contacts->phone ?></p>
+        <p>Github: <?php echo $contacts ->github ?></p>
+        <p>Linkedin: <?php echo $contacts ->linkedin ?></p>
+        <p>Telefone: <?php echo $contacts ->phone ?></p>
         <p><?php echo $open_to_negotiation ? 'ACEITO NEGOCIACAO' : 'NAO ABERTO A NEGOCIACAO' ?></p>
     </header>
 
     <div class="container">
         <h2>Resumo Profissional</h2>
-        <p><?php echo $description; ?></p>
+        <p><?php echo $description ?></p>
 
         <h2>Experiência Profissional</h2>
         <ul>
@@ -128,9 +129,9 @@ $experiences = [
         <h2>Formação Acadêmica</h2>
         <ul>
             <li>
-                <p><strong>Nome da Universidade</strong></p>
-                <p>Curso: Nome do Curso</p>
-                <p>Ano de Conclusão: Ano de Conclusão</p>
+                <p><strong>Faculdade Anhanguera</strong></p>
+                <p>Curso: Análise e Desenvolvimento de Sistemas</p>
+                <p>Ano de Conclusão: 2022</p>
             </li>
             <!-- Adicione mais formações acadêmicas conforme necessário -->
         </ul>
@@ -141,7 +142,8 @@ $experiences = [
             foreach ($skills as $skill) {
                 echo "<li>$skill</li>";
             }
-            // unset($skill);
+            // unset($skill);//limpa a variavel pois o php armazena o ultimo valor armazenado no loop
+            
             ?>
         </ul>
 
@@ -153,6 +155,7 @@ $experiences = [
             <li><?php echo $skills[1] ?></li>
             <li><?php echo $skills[2] ?></li>
             <li><?php echo $skills[3] ?></li>
+            <li><?php echo $skills[4] ?></li>
         </ul>
     </div>
 </body>
