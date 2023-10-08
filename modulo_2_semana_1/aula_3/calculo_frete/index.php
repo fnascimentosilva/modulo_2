@@ -1,3 +1,10 @@
+
+<?php 
+if(isset($_GET['error'])){
+    echo "<script>alert('Preencha os dados corretamente');</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
