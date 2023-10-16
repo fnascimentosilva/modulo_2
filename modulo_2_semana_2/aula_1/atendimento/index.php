@@ -31,6 +31,7 @@ if ($method === 'POST') {
     if($type === 1){
     array_push($filaAtendimento, ['nome' => $nome, 'cpf' => $cpf]);
 }else{
+    //coloca os dados inicio do array
     array_unshift($filaAtendimento, ['nome' => $nome, 'cpf' => $cpf]);
 }
     file_put_contents('filaAtendimento.txt', json_encode($filaAtendimento));
