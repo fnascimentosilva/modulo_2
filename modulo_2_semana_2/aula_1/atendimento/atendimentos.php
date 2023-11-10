@@ -15,18 +15,21 @@ if ($method === 'POST') {
     $body = json_decode(file_get_contents("php://input"));
 
 
+    $guiche = filter_var($body -> guiche, FILTER_VALIDATE_INT);
 
-    $nome = filter_var($body->nome, FILTER_SANITIZE_SPECIAL_CHARS);
-    $cpf = filter_var($body->cpf, FILTER_SANITIZE_SPECIAL_CHARS);
-    $type = filter_var($body -> type, FILTER_VALIDATE_INT);
-
-    if (!$nome || !$cpf || !$type) {
-        echo json_encode(['error' => 'faltam informacoes para o atendimento']);
+    if (!$guiche ) {
+        echo json_encode(['error' => 'Selecione o numero do guiche!']);
     }
 
 
 
-    $filaAtendimento = json_decode(file_get_contents('filaAtendimento.txt'));
+    $fila = json_decode(file_get_contents('filaAtendimento.txt'));
+
+    //pega o primeiro item do array
+    //excluir a pessoa do array de fila
+
+    //identificar qual o guiche de atendimento
+    //fazer um push do item retirado do array de fila
 
     if($type === 1){
     array_push($filaAtendimento, ['nome' => $nome, 'cpf' => $cpf]);
