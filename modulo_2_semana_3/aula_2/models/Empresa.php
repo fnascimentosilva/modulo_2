@@ -24,6 +24,24 @@ class Empresa{
     {
         return $this->nome;
     }
+    public function setCnpj($cnpj)
+    {
+        $this->cnpj = $cnpj;
+    }
+
+    public function getCnpj()
+    {
+        return $this->cnpj;
+    }
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+    }
+
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
 
     public function contratar(Funcionario $funcionario)
     {
