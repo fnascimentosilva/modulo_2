@@ -34,3 +34,10 @@ function response($response, $status)
   echo json_encode($response);
   exit;
 }
+
+function debug($content)
+{
+  echo '<pre>';
+  echo var_dump($content);
+  echo '</pre>';
+}
