@@ -5,14 +5,17 @@
 
 class Pessoa
 {
+    private $id;
     private $nome;
     private $idade;
     private $cpf;
 
 
-    public function __construct($nome, $idade) {
+    public function __construct($nome, $cpf) {
+        
+        $this->id = uniqid();
         $this->nome = $nome;
-        $this->idade = $idade;
+        $this->cpf = $cpf;
     }
 
     public function getNome()
@@ -43,5 +46,10 @@ class Pessoa
     public function setIdade($idade)
     {
         $this->idade = $idade;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }
