@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'Enemy.php';
 
 class Dragon extends Enemy {
@@ -37,5 +37,3 @@ class Dragon extends Enemy {
 
 
 }
-
-?>

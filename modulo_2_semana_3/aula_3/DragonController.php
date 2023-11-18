@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 require_once 'utils.php';
 require_once 'Dragon.php';
 
@@ -39,4 +38,3 @@ class DragonController
         response($list, 200);
     }
 }
-?>

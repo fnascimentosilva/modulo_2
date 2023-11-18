@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Enemy{
+class Enemy
+{
     protected $id;
     protected $name;
     protected $life;
@@ -92,6 +93,4 @@ class Enemy{
     {
         echo "ATACANDO";
     }
-    
 }
-?>
