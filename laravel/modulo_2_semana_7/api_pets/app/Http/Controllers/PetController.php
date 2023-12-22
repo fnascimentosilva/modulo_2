@@ -19,7 +19,7 @@ class PetController extends Controller
     }
 
 
-    //pega o body
+    //pega o body usado para cadastro
     public function store(Request $request)
     {
 
@@ -33,6 +33,7 @@ class PetController extends Controller
         return $pet;
     }
 
+    //funcao usada pra deletar atraves do id
     public function destroy($id)
     {
         $pet =  Pet::find($id);
@@ -44,6 +45,8 @@ class PetController extends Controller
         return $this->response(' ', null, true, 204);
     }
 
+
+    //buscar os dados de um pet atraves de um id
     public function show($id){
 
         $pet = Pet::find($id);
@@ -54,7 +57,11 @@ class PetController extends Controller
 
     }
 
+
+    //
     public function update($id, Request $request){
+
+        
 
         $data = $request->all();
 
