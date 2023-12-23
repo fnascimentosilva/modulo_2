@@ -6,3 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('races', [RaceController::class, 'store']);
 Route::get('races', [RaceController::class, 'index']);
+
+Route::post('species', [RaceController::class, 'store']);
+Route::get('species', [RaceController::class, 'index']);
