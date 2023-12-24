@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 150);
+            $table->integer('age')->nullable();
+            $table->float('weight')->nullable();
+            $table->enum('size', ['SMALL', 'MEDIUM', 'LARGE', 'EXTRA_LARGE']);
             $table->timestamps();
         });
     }
