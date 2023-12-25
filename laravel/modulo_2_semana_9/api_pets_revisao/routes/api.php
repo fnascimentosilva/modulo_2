@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\PetsReportController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SpecieController;
 use Illuminate\Http\Request;
@@ -14,3 +15,5 @@ Route::get('species', [SpecieController::class, 'index']);
 
 Route::get('pets', [PetController::class, 'index']);
 Route::post('pets', [PetController::class, 'store']);
+
+Route::get('pets/export', [PetsReportController::class, 'export'])/* ->middleware(['ability:export-pdf-pets']) */;
