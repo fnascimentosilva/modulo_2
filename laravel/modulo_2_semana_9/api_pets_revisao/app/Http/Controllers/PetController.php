@@ -2,19 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendWelcomePet;
 use App\Models\Pet;
+use App\Traits\HttpResponses;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
 class PetController extends Controller
 {
+    use HttpResponses;
+
     public function index(Request $request)
     { //faz um filtro pra pegar somente uma informaçao
         try {
             $filters = $request->query();
 
-            $pets = Pet::query();
+            $pets = Pet::query()
+
+
+            #->with('race') // traz todas as colunas
+            ->with(['race' => function ($query) {
+                $query->select('name', 'id');
+            }])
+            /* ->with('vaccines.professional.people') */
+            /*
+            ->with(['vaccines.professional.people' => function ($query) {
+                $query->orderBy('created_at', 'desc'); // mostra exemplos
+            }])
+            */
+            ->with('specie');
+
             //verifica se a age do pet nao esta vazia
             if ($request->has('age') && !empty($filters['age'])) {
                 $pets->where('age', $filters['age']);
@@ -50,18 +69,21 @@ class PetController extends Controller
                 'size' => 'required|string|in:SMALL,MEDIUM,LARGE,EXTRA_LARGE', // melhorar validacao para enum
                 'race_id' => 'required|int',
                 'specie_id' => 'required|int',
-                'client_id' => 'int'
+                /* 'client_id' => 'int' */
             ]);
 
             $pet = Pet::create($data);
 
-            /* if (!empty($pet->client_id)) {
+           /*  if (!empty($pet->client_id)) {
 
-                $people = People::find($pet->client_id);
+                $people = People::find($pet->client_id); */
 
-                Mail::to($people->email, $people->name)
-                    ->send(new SendWelcomePet($pet->name, 'Henrique Douglas'));
-            } */
+               /*  Mail::to($people->email, $people->name)
+                    ->send(new SendWelcomePet($pet->name, 'Henrique Douglas')); */
+
+                    Mail::to('fabricionsilva26@gmail.com', 'Fabricio Nascimento')
+                    ->send(new SendWelcomePet($pet->name, 'Fabricio Nascimento'));
+          /*   } */
 
             return $pet;
         } catch (Exception $exception) {
